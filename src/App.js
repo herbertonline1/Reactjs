@@ -1,107 +1,58 @@
-/*export default function App(){
-  return(
-    <div>
-      <h1>Bem vindo ao sistema</h1>
-      <h2>@Sujeitoprogramador :)</h2>
-    </div>
-  )
 
 
-}*/
+// Trabalhando com states
+import React, { Component } from "react"; //Importa o componete
 
-/*import React from "react";
+class App extends Component {
 
-const Equipe = (props) => {
-  return (
-    <div>
-     <Sobre nome={props.nome} cargo={props.cargo} idade={props.idade}/>
-     <Social fb={props.facebook}/>
-     <hr/>
-    </div>
-  );
-}
+  constructor(props) {
+    super(props);
+    this.state = {
+      nome: "Matheus",
+      contador: 0
+    };
 
-const Sobre = (props) =>{
-  return(
+    this.aumentar = this.aumentar.bind(this);
 
-    <div>
-      <h2>Olá sou o(a) {props.nome}</h2>
-      <h3>Cargo: {props.cargo}</h3>
-      <h3>Idade: {props.idade}</h3>
+    this.diminuir = this.diminuir.bind(this);
+  }
 
-    </div>
-  );
-}
+  aumentar(){
+    let state = this.state;
 
-const Social = (props) =>{
-  return(
-    <div>
-   
-      <a href={props.fb}>Facebook</a>
-      <a>Linkedin</a>
-      <a>Yuotube</a>
-    </div>
-  );
-}
+    state.contador += 1;
 
-function App() {
-  return (
-    <div>
-      <h1>Conheça a nossa equipe</h1>
-      <Equipe nome="Lucas" cargo="Programador" idade="29" facebook="https://google.com"/>
+    this.setState(state);
+  }
 
-      <Equipe nome="Mathues" cargo="FrontEnd" idade="37" facebook="https://google.com"/>
+  diminuir(){
 
-      <Equipe nome="Amanda" cargo="Redes" idade="20" facebook="https://google.com"/>
-       
-    </div>
-  );
-}
+    let state = this.state;
 
-export default App;
-*/
+    if(state.contador === 0){
+      alert("Opa chegou a zero!");
+      return;
+    }
+
+    state.contador -= 1;
+
+    this.setState(state);
+  }
 
 
-
-//Criando componetes em forma de classes (Class component)
-
-import React, {Component} from "react";
-
-class Equipe extends Component{
-  render(){
-    return(
+  render() {
+    return (
       <div>
-        <Sobre nome={this.props.nome} cargo={this.props.cargo} idade={this.props.idade}/>
+        <h1>Contador</h1>
+        <h3><button onClick={this.diminuir}>-</button>
+          {this.state.contador}
+          <button onClick={this.aumentar}>+</button>
+        </h3>
 
-        
-        <hr/>
       </div>
     );
+
   }
 }
 
-class Sobre extends Component{
-  render(){
-    return(
-      <div>
-        <h2>Olá sou o(a): {this.props.nome}</h2>
-        <h3>Cargo: {this.props.cargo}</h3>
-        <h3>Idade: {this.props.idade}</h3>
-      </div>
-    );
-  }
-}
-
-
-
-function App(){
-  return(
-    <div>
-      <h1>Conheça nossa equipe:</h1>
-      <Equipe nome="Matheus" cargo="Programador" idade="25"/>
-    </div>
-  );
-}
-
-
-export default App;
+export default App; // Exporta  Componente 
