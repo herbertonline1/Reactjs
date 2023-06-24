@@ -1,7 +1,7 @@
 
 
 // Trabalhando com states
-import React, { Component } from "react"; //Importa o componete
+/*import React, { Component } from "react"; //Importa o componete
 
 class App extends Component {
 
@@ -56,3 +56,58 @@ class App extends Component {
 }
 
 export default App; // Exporta  Componente 
+*/
+
+/*import React ,{Component} from 'react';
+
+class App extends Component{
+
+  constructor(props){
+    super(props);
+    this.state = {
+      hora: "00:00:00"
+    };
+  }
+
+componentDidMount(){
+
+    setInterval(()=>{
+
+      this.setState({hora: new Date().toLocaleTimeString()})
+
+    }, 1000);
+
+}
+
+componentDidUpdate(){
+  console.log("atualizou");
+}
+
+  render(){
+    return(
+      <div>
+        <h1>Meu Projeto {this.state.hora}</h1>
+      </div>
+    );
+  }
+}
+
+export default App;
+*/
+
+
+import React, { Component } from "react";
+import Membro from './components/Membro';
+
+class App extends Component{
+
+render(){
+  return(
+    <div>
+       <Membro nome="Visitante"/>
+    </div>
+  );
+}
+}
+
+export default App;
